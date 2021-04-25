@@ -34,7 +34,7 @@ app.use(express.errorHandler());
 app.get('/', function (req, res) {
 	res.render('index', {
 		title: 'Awesome!',
-		message: 'Your node server is running.'
+		message: 'PGS API node server is running.'
 	});
 });
 

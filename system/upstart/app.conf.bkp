@@ -1,11 +1,10 @@
 # app
 
 description "node.js app daemon"
-author "Piyush Gaur"
+author "Mohammad Islam"
 
 # start after `/vagrant` shared folder is mounted
-start on vagrant-mounted
-#start on startup
+start on (vagrant-mounted and net-device-up IFACE=lo)
 
 # stop on system halt/reboot
 stop on runlevel [06]
@@ -18,9 +17,7 @@ respawn limit 10 5
 
 script
 	#export NODE_ENV=production
-	cd /vagrant
-	pm2 startOrRestart ecosystem.config.js
-	#exec sudo start-stop-daemon --start --chdir /vagrant --chuid vagrant:vagrant --make-pidfile --pidfile /var/run/app.pid --exec /usr/bin/node /vagrant/app.js >> /vagrant/system/logs/app.log 2>&1
+	exec start-stop-daemon --start --chdir /vagrant --chuid vagrant:vagrant --make-pidfile --pidfile /var/run/app.pid --exec /usr/local/bin/node /vagrant/app.js >> /vagrant/system/logs/app.log 2>&1
 end script
 
 pre-start script

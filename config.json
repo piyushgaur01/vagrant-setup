@@ -1,9 +1,9 @@
 {
 	"development": {
-		"port": 3000
+		"port": 8081
 	},
 
 	"production": {
-		"port": 3000		
+		"port": 8081		
 	}
 }

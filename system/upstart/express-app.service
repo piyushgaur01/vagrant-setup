@@ -1,0 +1,8 @@
+[Unit]
+After=network.target vagrant.mount
+
+[Service]
+ExecStart=/vagrant/start-server.sh
+
+[Install]
+WantedBy=default.target
